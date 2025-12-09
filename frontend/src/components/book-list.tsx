@@ -1,6 +1,8 @@
 import { getReactBooks } from '@/api.ts'
 import { useQuery } from '@tanstack/react-query'
 import { Book } from '@/components/book.tsx'
+import { getBookKey } from '@/lib/utils.ts'
+import { Grid } from '@/components/layout/grid.tsx'
 
 export const BookList = () => {
   const query = useQuery({ queryKey: ['books'], queryFn: getReactBooks })
@@ -9,10 +11,14 @@ export const BookList = () => {
     return <div>Loading...</div>
   }
 
-  return <div>{query.data.docs.map(book => (
-    <Book
-      key={`${book.cover_i}-${book.first_publish_year}`}
-      {...book}
-    />
-  ))}</div>
+  return (
+    <Grid>
+      {query.data.docs.map(book => (
+        <Book
+          key={getBookKey(book)}
+          {...book}
+        />
+      ))}
+    </Grid>
+  )
 }
