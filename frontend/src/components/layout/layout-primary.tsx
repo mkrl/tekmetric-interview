@@ -1,0 +1,20 @@
+import { BookmarkIcon } from '@/components/ui/icons/akar-icons-bookmark.tsx'
+
+export type LayoutPrimaryProps = {
+  title: string;
+  children?: React.ReactNode;
+};
+
+export const LayoutPrimary = ({ title, children }: LayoutPrimaryProps) => {
+  return (
+    <>
+      <header className="flex items-center gap-4 p-4 bg-white shadow-md mb-6" role="banner">
+        <BookmarkIcon />
+        <h1 className="text-2xl font-semibold text-gray-900">{title}</h1>
+      </header>
+
+      <main role="main" className="max-w-screen-xl m-auto">{children}</main>
+    </>
+  )
+}
+

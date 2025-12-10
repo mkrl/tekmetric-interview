@@ -1,15 +1,13 @@
 import { getReactBooks } from '@/api.ts'
-import { useQuery } from '@tanstack/react-query'
+import { useSuspenseQuery } from '@tanstack/react-query'
 import { Book } from '@/components/book.tsx'
 import { getBookKey } from '@/lib/utils.ts'
 import { Grid } from '@/components/layout/grid.tsx'
 
-export const BookList = () => {
-  const query = useQuery({ queryKey: ['books'], queryFn: getReactBooks })
+export const BOOKS_PER_PAGE = 9
 
-  if (query.isPending) {
-    return <div>Loading...</div>
-  }
+export const BookList = () => {
+  const query = useSuspenseQuery({ queryKey: ['books'], queryFn: () => getReactBooks(BOOKS_PER_PAGE) })
 
   return (
     <Grid>

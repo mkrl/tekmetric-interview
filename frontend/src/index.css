@@ -118,3 +118,8 @@
     @apply bg-background text-foreground;
   }
 }
+
+body {
+  background-color: hsl(204 100% 80%);
+  background-image: url(/noise-light.png);
+}

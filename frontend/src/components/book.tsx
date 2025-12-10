@@ -7,13 +7,13 @@ import { BookImage } from '@/components/book-image.tsx'
 
 export const Book =
   ({
-     title, first_publish_year, author_name, cover_i, isbn, ia
+     title, first_publish_year, author_name, isbn, ia
    }: OpenLibraryDoc) => {
   return (
     <Card>
-      <div className="flex flex-row items-start">
+      <div className="text-center flex flex-col sm:flex-row md:flex-row items-start h-full">
         <BookImage isbn={isbn} ia={ia}/>
-        <div id={'content'}
+        <div
              className="flex flex-col py-6 w-full h-full overflow-x-auto">
           <h1
             className="scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight">
