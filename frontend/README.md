@@ -1,5 +1,11 @@
 # React + TypeScript + Vite
 
+Install dependencies with force (a few other dependencies are not configured for React Canary):
+
+```bash
+npm install --force
+```
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:

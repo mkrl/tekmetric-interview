@@ -10,7 +10,7 @@ export const BookLoader =
     return (
       <Grid>
         {Array.from({ length: BOOKS_PER_PAGE }).map((_, index) => (
-          <Card key={index} className="animate-pulse bg-gray-200 h-full w-full sm:h-[257px] md:h-[257px]"/>
+          <Card key={index} className="animate-pulse bg-gray-100 h-full w-full sm:h-[257px] md:h-[257px]"/>
         ))}
       </Grid>
     )
