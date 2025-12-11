@@ -1,7 +1,6 @@
 import { getReactBooks } from '@/api.ts'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { Book } from '@/components/book.tsx'
-import { getBookKey } from '@/lib/utils.ts'
 import { Grid } from '@/components/layout/grid.tsx'
 import { BookPagination } from '@/components/book-pagination.tsx'
 import { useState } from 'react'
@@ -18,10 +17,11 @@ export const BookList = () => {
   return (
     <>
       <Grid>
-        {query.data.docs.map(book => (
+        {query.data.docs.map(({ key, ...rest }) => (
           <Book
-            key={getBookKey(book)}
-            {...book}
+            key={key}
+            link={key}
+            {...rest}
           />
         ))}
       </Grid>

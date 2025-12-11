@@ -2,7 +2,10 @@ import { useState } from 'react'
 import type { OpenLibraryDoc } from '@/api.ts'
 import { BookIcon } from '@/components/ui/icons/akar-icons-book.tsx'
 
-const getCoverUrl = ({ isbn, ia }: Partial<OpenLibraryDoc>) => {
+const getCoverUrl = ({ isbn, ia, cover_i }: Partial<OpenLibraryDoc>) => {
+  if (cover_i) {
+    return `https://covers.openlibrary.org/b/id/${cover_i}-M.jpg`
+  }
   if (isbn) {
     return `https://covers.openlibrary.org/b/isbn/${isbn[0]}-M.jpg`
   }
@@ -12,10 +15,10 @@ const getCoverUrl = ({ isbn, ia }: Partial<OpenLibraryDoc>) => {
   return null
 }
 
-export const BookImage = ({ isbn, ia }: Partial<OpenLibraryDoc>) => {
+export const BookImage = ({ isbn, ia, cover_i }: Partial<OpenLibraryDoc>) => {
   const [loaded, setLoaded] = useState(false)
 
-  const imageUrl = getCoverUrl({ isbn, ia })
+  const imageUrl = getCoverUrl({ isbn, ia, cover_i })
 
   // Even if we have an imageUrl, the image returned might
   // be a 1x1 pixel placeholder,
