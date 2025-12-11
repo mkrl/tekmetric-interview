@@ -19,8 +19,8 @@ export interface OpenLibrarySearchResponse {
 }
 
 
-export const getReactBooks = async (perPage: number): Promise<OpenLibrarySearchResponse> => {
-  const response = await fetch(`${API_URL}?limit=${perPage}&q=react&fields=title,author_name,first_publish_year,isbn,cover_i,ia`)
+export const getReactBooks = async (perPage: number, pageNumber: number): Promise<OpenLibrarySearchResponse> => {
+  const response = await fetch(`${API_URL}?limit=${perPage}&page=${pageNumber}&q=react&fields=title,author_name,first_publish_year,isbn,cover_i,ia`)
   // Left it out for referencing other fields if needed later, the API docs are very sparse.
   // const response = await fetch(`${API_URL}?limit=${perPage}&q=react`)
   if (!response.ok) {

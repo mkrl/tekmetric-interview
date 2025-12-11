@@ -7,21 +7,25 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { BookList } from '@/components/book-list.tsx'
 import { LayoutPrimary } from '@/components/layout/layout-primary.tsx'
 import { BookLoader } from '@/components/book-loader.tsx'
-import { ViewTransition } from 'react';
+import { ViewTransition } from 'react'
+import { ErrorBoundary } from '@/components/error-boundary.tsx'
 
 const queryClient = new QueryClient()
 
-// @TODOL: Add error boundary
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <LayoutPrimary title="React Books">
-        <ViewTransition>
-          <Suspense fallback={<BookLoader/>}>
-            <BookList />
-          </Suspense>
-        </ViewTransition>
-      </LayoutPrimary>
-    </QueryClientProvider>
+    <ErrorBoundary>
+      <QueryClientProvider client={queryClient}>
+        <LayoutPrimary title="React Books">
+          <ViewTransition>
+            <ErrorBoundary>
+              <Suspense fallback={<BookLoader/>}>
+                <BookList />
+              </Suspense>
+            </ErrorBoundary>
+          </ViewTransition>
+        </LayoutPrimary>
+      </QueryClientProvider>
+    </ErrorBoundary>
   </StrictMode>,
 )

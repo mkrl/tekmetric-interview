@@ -13,7 +13,7 @@ export const LayoutPrimary = ({ title, children }: LayoutPrimaryProps) => {
         <h1 className="text-2xl font-semibold text-gray-900">{title}</h1>
       </header>
 
-      <main role="main" className="max-w-screen-xl m-auto p-2 sm:p-4">{children}</main>
+      <main role="main" className="max-w-screen-xl m-auto p-2 sm:p-4 h-full">{children}</main>
     </>
   )
 }

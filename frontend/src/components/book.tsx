@@ -10,14 +10,14 @@ export const Book =
      title, first_publish_year, author_name, isbn, ia
    }: OpenLibraryDoc) => {
     return (
-      <Card>
+      <Card className='max-h-[257px] overflow-y-hidden'>
         <div
           className="text-center flex flex-row items-start h-full">
           <BookImage isbn={isbn} ia={ia}/>
           <div
             className="flex flex-col py-6 w-full h-full overflow-x-auto">
             <h1
-              className="scroll-m-20 px-2 border-b pb-4 mb-2 text-2xl font-semibold tracking-tight">
+              className="scroll-m-20 px-2 border-b pb-4 mb-2 text-xl font-semibold tracking-tight">
               {title}
             </h1>
             <div className="flex flex-col justify-between h-full">
@@ -25,7 +25,7 @@ export const Book =
                 {author_name && author_name.length > 0 ? (
                   <>
                     {author_name.slice(0, 2).map((author, i) => (
-                      <p key={i} className="truncate p-1">
+                      <p key={i} className="truncate">
                         {author}
                       </p>
                     ))}
